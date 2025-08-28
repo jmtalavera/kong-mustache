@@ -18,4 +18,4 @@ Just add the custom plugin `schema.lua` in Konnect, as any other custom plugin a
  2. **Content-Type**: The expected content-type that the mustache template will produce. By default, it produces `application/json`
 
 ### Example
-![Plugin configuration](fff)
+![Plugin configuration](images/kong-mustache-plugin.png)
