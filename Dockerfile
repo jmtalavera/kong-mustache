@@ -9,10 +9,8 @@ USER root
 #RUN apk add mariadb-dev
 #RUN luarocks install luasql-mysql MYSQL_INCDIR=/usr/include/mysql
 RUN luarocks install lustache
+COPY ./kong/plugins/kong-mustache-plugin /usr/local/share/lua/5.1/kong/plugins/kong-mustache-plugin
 
 # reset back the defaults
 USER kong
-ENTRYPOINT ["/docker-entrypoint.sh"]
-STOPSIGNAL SIGQUIT
-HEALTHCHECK --interval=10s --timeout=10s --retries=10 CMD kong health
-CMD ["kong", "docker-start"]
+ENV KONG_PLUGINS=bundled,kong-mustache-plugin
